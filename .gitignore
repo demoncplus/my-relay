@@ -1,0 +1,16 @@
+# 密钥与运行时数据，禁止入库
+.env
+deploy/.env
+deploy/admin.json
+deploy/data/
+deploy/logs/
+deploy/postgres/
+deploy/redis/
+*.pem
+*.key
+
+# 系统
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc

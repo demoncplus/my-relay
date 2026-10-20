@@ -1,0 +1,12 @@
+[Unit]
+Description=WireGuard friend quota web app
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /opt/wg-usage-app/app.py
+Restart=always
+RestartSec=3
+User=root
+
+[Install]
+WantedBy=multi-user.target
