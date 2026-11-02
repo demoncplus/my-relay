@@ -1,4 +1,4 @@
-# my-relay
+﻿# my-relay
 
 RackNerd VPS 上的 New API 中转站部署仓库。
 
