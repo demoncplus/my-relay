@@ -54,6 +54,8 @@ bash tests/relay_healthcheck.sh
 
 覆盖：中转站 API、余量页、Clash 订阅、WireGuard 下载链接。
 
+- 2026-11-03: **修复 2053 备用入站**——reality_manager 此前只给 4001 填充用户，2053 备用直连口自 11/1 迁移起 clients 为空（fast-fail）；现改为填充所有 vless 入站，节点2（pc-stable-US）恢复独立可用。看门狗 v2.2 新增节点2每小时探测。
+
 ## 约定（必须遵守）
 
 1. 每次改动完成后，必须创建一个对应的 Git commit。

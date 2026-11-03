@@ -47,7 +47,9 @@ def effective(users,state):
             disabled.append(u['name'])
         else:
             clients.append({'id':u['id'],'email':u['name'],'flow':'xtls-rprx-vision','level':0})
-    config['inbounds'][0]['settings']['clients']=clients
+    for inb in config['inbounds']:
+        if inb.get('protocol')=='vless':
+            inb.setdefault('settings',{})['clients']=clients
     return config,disabled
 
 def main():
