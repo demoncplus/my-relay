@@ -60,6 +60,8 @@ bash tests/relay_healthcheck.sh
 
 - 2026-11-03: **完整事件复盘** docs/incident-2026-10-31-hk-outage.md（香港中断3天 → 443应急迁移 → 2053修复 → 恢复回切，含经验教训6条）
 
+- 2026-11-04: **新增荐福禅寺导览 AI 大脑服务**（`dafeiyu-brain.service`，监听 `0.0.0.0:18765`，ufw 已放行）。程序在 `/opt/dafeiyu-brain`（brain.py + 静态导览页 + Live2D 模型 + venv），弹幕经 bilibili-api 匿名连接（wbi 签名可过风控），回复走本机 New API（`http://127.0.0.1:3000/v1`，模型 `glm-4.5-air`，专用令牌 `dafeiyu-brain` 属 default 分组），语音用 edge-tts。不改 Nginx、不占 80/443，与中转站互不影响。端口 8765/8766/8787 已被既有服务占用，故用 18765。
+
 ## 约定（必须遵守）
 
 1. 每次改动完成后，必须创建一个对应的 Git commit。

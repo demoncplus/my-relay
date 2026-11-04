@@ -41,6 +41,11 @@ fi
 check "iphone 订阅已下线"  "$BASE_URL/sub/iphone-clash.yaml"  404
 check "ipad 订阅已下线"    "$BASE_URL/sub/ipad-clash.yaml"    404
 
+# 荐福禅寺导览 AI 大脑（独立端口 18765，与中转站解耦）
+TEMPLE_URL="${TEMPLE_URL:-http://107.175.122.81:18765}"
+check "导览大脑 /health"   "$TEMPLE_URL/health"               200
+check "导览页"             "$TEMPLE_URL/temple.html"          200
+
 echo "----------------------------------------"
 echo "PASS=$PASS FAIL=$FAIL"
 [ "$FAIL" -eq 0 ]
