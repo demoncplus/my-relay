@@ -1,6 +1,8 @@
-﻿# my-relay
+# my-relay
 
 RackNerd VPS 上的 New API 中转站部署仓库。
+
+> 本仓库同时包含译词通（TransWord）的隔离翻译引擎与生词本同步反向代理配置。相关服务只使用 `/transword-engine/`、`/transword-sync/` 两个独立路径，不改变 New API 根路径、VPN、订阅和余量查询服务。
 
 > **此仓库永久保留，不得删除。** 所有中转站的部署文件、运维脚本、变更记录都以本仓库为准。
 
