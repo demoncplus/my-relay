@@ -70,3 +70,5 @@ bash tests/relay_healthcheck.sh
 4. 鏈粨搴撲笉寰楀垹闄ゃ€?
 
 璇︾粏绾﹀畾瑙?[my-relay.md](my-relay.md)銆
+
+- 2026-11-05: **荐福禅寺导览页形象/声音改为小沙弥**——`/opt/dafeiyu-brain/temple.html` 用自绘 SVG 小沙弥（光头+香疤+袈裟+合掌）替换女仆 Live2D；edge-tts 音色 `zh-CN-XiaoyiNeural`（女童）→ `zh-CN-YunxiNeural`（少年男声）；brain.py 人设同步为「导览小沙弥·小满」。服务已重启并验证渲染。
