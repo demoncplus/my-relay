@@ -48,3 +48,17 @@
 - 换机套件：vpn-deploy-kit 仓库（私有）
 - 监控：watchdog.ps1 v2.2（本机 default-workspace/v2rayN-watchdog/）
 - 域名路由：vpn-deploy-kit tools/（DOMAIN-ROUTE.md）
+---
+
+## 后记：双实例架构（2026-11-05~06）
+
+REALITY 协议不兼容事件：服务器 xray 26.x 与 Clash 内核(mihomo)不兼容，朋友全部报 REALITY authentication failed。实测兼容矩阵后，采用双实例：
+
+- 443 (xray 26.10.31) → v2rayN 系用户（主线路）
+- 2087 (xray 1.8.24) → Clash 用户（legacy 实例，systemd: xray-legacy）
+- 配额合并：reality_manager 双 API 查询（10085+10086），两通道流量合并计额
+- 配置自动同步：主服务重启/加人时自动重新生成 effective-legacy.json 并重启 legacy
+- 监控自愈：watchdog v2.3.1 每小时用 mihomo 探测 2087，失败自动 SSH 重启
+- 教训：升级 xray 大版本前必须测 mihomo 兼容性；monitoring probe 必须用与用户一致的客户端核心（xray 26 探测 1.8.24 服务端会误报 DOWN）
+
+全量验证：156 条链接，v2ray 双节点 100%，Clash 2087 通道 100%，Clash 节点1 0%（机场中转机版本问题，预期内）。
