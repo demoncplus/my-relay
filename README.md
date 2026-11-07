@@ -72,3 +72,5 @@ bash tests/relay_healthcheck.sh
 璇︾粏绾﹀畾瑙?[my-relay.md](my-relay.md)銆
 
 - 2026-11-05: **荐福禅寺导览页形象/声音改为小沙弥**——`/opt/dafeiyu-brain/temple.html` 用自绘 SVG 小沙弥（光头+香疤+袈裟+合掌）替换女仆 Live2D；edge-tts 音色 `zh-CN-XiaoyiNeural`（女童）→ `zh-CN-YunxiNeural`（少年男声）；brain.py 人设同步为「导览小沙弥·小满」。服务已重启并验证渲染。
+
+- 2026-11-07: **导览形象定稿为专业插画小沙弥**——此前自绘 SVG 版被用户否决（太丑），改用 いらすとや（irasutoya，免费商用授权）的「お坊さんの男の子」插画（`monk.png`，379×600 透明底）。页面从 Live2D/SVG 全部换为 `<img>` + CSS 动画（浮动、摇摆、说话蹦跳、26s 合掌鞠躬），并保留少年男声 `zh-CN-YunxiNeural`。已部署 `/opt/dafeiyu-brain/`，验证：temple.html/monk.png 均 200、/health ok、/llm 回归 200（4.8s）。备注：中转站无可用画图渠道（gpt-image-2 上游欠费、cline 分组无渠道），故弃用 AI 生图路线。
