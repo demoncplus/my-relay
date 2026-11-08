@@ -78,3 +78,5 @@ bash tests/relay_healthcheck.sh
 - 2026-11-07: **导览页三连改进**——①形象可自选：设置面板内置 4 张 irasutoya 形象（默认改为合掌念经款 monk2.png）＋「相册上传」任意图片（canvas 压缩后存 localStorage）；②提速：发现 glm-4.5-air 为思考型模型，加 `thinking:{type:disabled}` 后 3.5s→1s，且修复了 max_tokens=400 时思考 token 挤空正文导致的空回复 bug；publish 改两段式（文字先上桌、语音后补）；③音质：页面提问不再用手机系统 TTS，改走新端点 `POST /api/ask`（token 同 page_token，入队走弹幕同款 LLM→edge-tts 管线），设置面板新增 4 音色选择（云希/云夏/云健/晓晓，localStorage 持久化、按请求传给大脑）。实测：点击提问→字幕 1.5s→语音 4s，mp3 可下载。中转站其余聊天渠道（kimi/deepseek/qwen/glm-4.6 等）实测全部失效（余额/密钥/无渠道），glm-4.5-air 为唯一可用渠道。
 
 - 2026-11-08: **用户令停播，大脑服务彻底下线**——核实 B站房间 1946292432 live_status=0（未开播）、近 6h 弹幕 0 条、本机无推流进程；确认无任何对外直播后，`systemctl stop + disable dafeiyu-brain`（切断开机自启与崩溃自动拉起），18765 端口已拒绝连接。文件保留在 `/opt/dafeiyu-brain/` 未动；恢复命令 `sudo systemctl enable --now dafeiyu-brain`。
+
+- 2026-11-08: **按用户令恢复大脑服务**——`systemctl enable --now dafeiyu-brain`，服务 active、页面/形象资源 200，全链路实测通过（/api/ask 提问「介绍大雄宝殿」→ 字幕+云希语音 mp3 57024 字节均正常送达）。
