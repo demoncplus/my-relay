@@ -80,3 +80,5 @@ bash tests/relay_healthcheck.sh
 - 2026-11-08: **用户令停播，大脑服务彻底下线**——核实 B站房间 1946292432 live_status=0（未开播）、近 6h 弹幕 0 条、本机无推流进程；确认无任何对外直播后，`systemctl stop + disable dafeiyu-brain`（切断开机自启与崩溃自动拉起），18765 端口已拒绝连接。文件保留在 `/opt/dafeiyu-brain/` 未动；恢复命令 `sudo systemctl enable --now dafeiyu-brain`。
 
 - 2026-11-08: **按用户令恢复大脑服务**——`systemctl enable --now dafeiyu-brain`，服务 active、页面/形象资源 200，全链路实测通过（/api/ask 提问「介绍大雄宝殿」→ 字幕+云希语音 mp3 57024 字节均正常送达）。
+
+- 2026-11-11: **修复手机音色按钮点击无效**——temple.html 音色按钮改为直接 onclick 调用 `selectVoice()`，同时保留事件委托兜底；新增「当前音色」实时回显，提问继续读取已选 voice 并发送到 `/api/ask`。桌面与线上浏览器模拟点击均验证：云健/云夏点击后立即高亮、回显并写入 localStorage；线上 page HTTP 200，brain active。
